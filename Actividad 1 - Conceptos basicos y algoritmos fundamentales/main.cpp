@@ -71,7 +71,7 @@ outFile.open("resultado.txt");
 		  }
     }
 
-  sorts.ordenaBurbuja(datos_txt);
+  sorts.ordenaMerge(datos_txt);
     
   for (int i = 0; i < datos_txt.size(); i++) {
     outFile << datos_txt[i] << "\n";
