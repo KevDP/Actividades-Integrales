@@ -4,6 +4,7 @@
 #include <string>
 #include <sstream>
 #include <iostream>
+#include <fstream>
 
 using namespace std;
 
@@ -23,20 +24,38 @@ private:
 public:
   Heap();
 	Heap(unsigned int);
+  ~Heap();
 	void push(T);
 	T pop();
   T top();
+  void escribir(string);
   bool empty() const;
+  void find(T);
+  
   int size() const;  //Ya no es necesario que sea uint, dado que usa count, quien ya posee ese atributo
 
 	string toString() const;
 };
 
 template <class T>
+Heap<T>::Heap(){
+	tamaño = 0;
+	data = 0;
+	count = 1;            // Contador y primer dato a tomar será desde 1
+}
+
+template <class T>
 Heap<T>::Heap(unsigned int tam){
 	tamaño = tam;
 	data = new T[tam];
 	count = 1;            // Contador y primer dato a tomar será desde 1
+}
+
+template <class T>
+Heap<T>::~Heap() {
+  delete [] data;
+  data = 0;
+  count = 0;
 }
 
 template <class T>
@@ -105,6 +124,19 @@ T Heap<T>::top(){       // Regresar el primer dato de la fila priorizada
 }
 
 template <class T>
+void Heap<T>::find(T val){       // Encontrar el dato en la fila priorizada
+  int pos;
+  pos = count;
+  count++;
+  if(data[pos] == val){
+  cout<<"El valor encontrado se encuentra en la fila"<<"\n\n"<<val<<endl;
+  }
+  else {
+    cout << "El valor no se encuentra entre la base de datos" << endl;
+  }
+}
+
+template <class T>
 bool Heap<T>::empty() const {   // ¿Está vacía?
 	return (count == 1);
 }
@@ -124,4 +156,13 @@ string Heap<T>::toString() const {
 	} aux << "]";
 	return aux.str();
 }
+
+template <class T>
+void Heap<T>::escribir(string arch){
+	ofstream archivo;
+  archivo.open(arch);
+  toString();
+  archivo.close();
+}
+
 #endif
