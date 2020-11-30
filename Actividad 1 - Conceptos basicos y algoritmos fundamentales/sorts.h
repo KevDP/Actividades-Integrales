@@ -16,6 +16,7 @@ class Sorts{
     void copyArray(std::vector<T>&, std::vector<T>&, int, int);
     void mergeArray(std::vector<T>&, std::vector<T>&, int, int, int);
     void mergeSplit(std::vector<T>&, std::vector<T>&, int, int);
+    int size;
 
   public:
     std::vector<T> ordenaSeleccion(std::vector<T>&);
