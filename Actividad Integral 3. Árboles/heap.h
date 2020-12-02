@@ -18,31 +18,24 @@ private:
 	unsigned int parent(unsigned int) const;
 	unsigned int left(unsigned int) const;
 	unsigned int right(unsigned int) const;
-	void heapify(unsigned int);
 	void swap(unsigned int, unsigned int);
 
 public:
-  Heap();
+  //Heap();
 	Heap(unsigned int);
   ~Heap();
 	void push(T);
 	T pop();
   T top();
-  void escribir(string);
   bool empty() const;
   void find(T);
+  void heapify(unsigned int);
   
   int size() const;  //Ya no es necesario que sea uint, dado que usa count, quien ya posee ese atributo
 
 	string toString() const;
+  string toStringCases() const;
 };
-
-template <class T>
-Heap<T>::Heap(){
-	tamaño = 0;
-	data = 0;
-	count = 1;            // Contador y primer dato a tomar será desde 1
-}
 
 template <class T>
 Heap<T>::Heap(unsigned int tam){
@@ -79,6 +72,7 @@ void Heap<T>::swap(unsigned int i, unsigned int j) {
 	data[i] = data[j];
 	data[j] = aux;
 }
+
 template <class T>
 void Heap<T>::heapify(unsigned int pos) {
 	unsigned int le = left(pos);
@@ -147,7 +141,7 @@ int Heap<T>::size() const {     // ¿Cuántos datos tiene?
 }
 
 template <class T>
-string Heap<T>::toString() const {
+string Heap<T>::toStringCases() const {
 	stringstream aux;
 	aux << "[";	for (unsigned int i = 1; i < count; i++) {
 		if (i != 1) {
@@ -158,11 +152,14 @@ string Heap<T>::toString() const {
 }
 
 template <class T>
-void Heap<T>::escribir(string arch){
-	ofstream archivo;
-  archivo.open(arch);
-  toString();
-  archivo.close();
+string Heap<T>::toString() const {
+	stringstream aux;
+	aux << "";	for (unsigned int i = 1; i < count; i++) {
+		if (i != 1) {
+			aux << "\n";
+		} aux << data[i];
+	} aux << "";
+	return aux.str();
 }
 
 #endif
