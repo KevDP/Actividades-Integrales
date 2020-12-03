@@ -46,19 +46,19 @@ do {
 	return 0;
 }
 
-void leerGrafo(){
+void leerGrafo(){			// Leer los datos del grafo de 13 x 13
   Grafo.loadGraphList(filenameLoad, 13, 13);
   cout<<"\n Datos obtenidos correctamente del archivo\n"<<"\n";
 }
 
-void imprimirGrafo(){
+void imprimirGrafo(){			// Imprimir el grafo a la pantalla con las salas y sus conexiones
   cout<<"\n El grafo seleccionado tiene los siguientes datos: \n"<<endl;
   cout<<Grafo.printAdjListProy()<<endl;
   cout<<"\n Datos impresos correctamente\n"<<endl;
 }
 
 
-void recorrerGrafo(){
+void recorrerGrafo(){			// Recorrer el grafo según la sala en donde se encuentra y hacia donde irá el usuario
   cout<<"\n Inserte la coordenada para empezar el recorrido \n"<<endl;
   cout<<"Inicial: ";
   cin>>init_vertx;
@@ -68,7 +68,7 @@ void recorrerGrafo(){
   cout<<Grafo.DFS_path(init_vertx,target_vertx)<<endl;
 }
 
-void guardarRespuesta(){
+void guardarRespuesta(){		// Guardar la respuesta del punto 3 en el archivo nuevo
 string filenameSave;
 
 ofstream outFile;
@@ -83,7 +83,7 @@ outFile.open(filenameSave);
   outFile.close();
 }
 
-  void casosPrueba(){
+  void casosPrueba(){			// Probar los casos de prueba
     Graph star;
 
     string star_ans;
