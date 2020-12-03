@@ -13,7 +13,7 @@ class Heap {
 
 private:
 	T *data;
-	unsigned int tamaño;    // uint impide que se utilicen datos negativos
+	unsigned int tamano;    // uint impide que se utilicen datos negativos
 	unsigned int count;
 	unsigned int parent(unsigned int) const;
 	unsigned int left(unsigned int) const;
@@ -39,7 +39,7 @@ public:
 
 template <class T>
 Heap<T>::Heap(unsigned int tam){
-	tamaño = tam;
+	tamano = tam;
 	data = new T[tam];
 	count = 1;            // Contador y primer dato a tomar será desde 1
 }
