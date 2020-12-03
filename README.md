@@ -18,7 +18,7 @@
 
 #### Se ha corregido el constructor y la instanciación del árbol heap en el main.cpp porque lo detectaba vacío.
 
-### Se ha agregado la opción "casos de prueba" en el menú desplegable.
+#### Se ha agregado la opción "casos de prueba" en el menú desplegable.
 
 #### Se ha documentado el código del main.cpp para hacerlo más intuitivo.
 
@@ -26,6 +26,6 @@
 
 #### Se ha corregido el motivo del proyecto y la estructuración del menú desplegable.
 
-### Se ha agregado la opción "casos de prueba" en el menú desplegable.
+#### Se ha agregado la opción "casos de prueba" en el menú desplegable.
 
 #### Se ha documentado el código del main.cpp para hacerlo más intuitivo.
