@@ -17,11 +17,11 @@ void ordenar();
 void leer();
 void casosPrueba();
 
-vector<string> datos_txt;
-vector<string> datosOrd;
-List<string> datos;
-List<string> datosActualizados;
-Sorts<string> sorts;
+vector<string> datos_txt;			// Vector para guardar los datos del archivo
+vector<string> datosOrd;			// Vector para guardar los datos ordenados
+List<string> datos;				// Lista para guardar los datos preliminares del archivo
+List<string> datosActualizados;			// Lista para actualizar los datos
+Sorts<string> sorts;				// Usar un sort
 int pos;
 string pos2,filenameLoad;
 
@@ -42,7 +42,7 @@ cout<<"\n Datos ordenados correctamente, elija una opción: \n\n";
 int opcion;
 
 do {
-		cout << "1. Ver datos obtenidos y ordenados\n";
+    cout << "1. Ver datos obtenidos y ordenados\n";
     cout << "2. Escribir datos en archivo\n";
     cout << "3. Buscar dato\n";
     cout << "4. Eliminar dato\n";
@@ -64,14 +64,14 @@ do {
 	return 0;
 }
 
-void verDatosOrd(){
+void verDatosOrd(){						// Leer los datos del vector con los mismos ya ordenados
 cout<<"\n A continuación se muestran los datos ordenados: \n\n";
   for(int i = 0; i < datosOrd.size(); i++){
     cout<<datosOrd.at(i)<<"\n";
   }
 }
 
-void escribir(){
+void escribir(){						// Guardar cada uno de los datos encontrados en el vector con los datos ya ordenados
 vector<string> datosActualizados(datosOrd);
 string filenameSave;
 
@@ -88,9 +88,8 @@ outFile.open(filenameSave);
   outFile.close();
 }
 
-void buscar(){
+void buscar(){		// Buscar el capítulo según su número (ejemplo: 15 para desplegar los datos del capítulo 015)
 int cap;
-int des_cap;
 cout << "\n Ingrese el capítulo a buscar: \n"<<endl;
 cin>>cap;
 for (int i = 0; i < datosOrd.size(); i++) {
@@ -101,7 +100,7 @@ for (int i = 0; i < datosOrd.size(); i++) {
 cout<< "\n   Capítulo encontrado correctamente. \n"<<endl;
 }
 
-void remover(){
+void remover(){			// Eliminar algún capítulo de la lista de datos y desplegarla actualizada
 int cap;
 cout << "\n Ingrese el número del capitulo a eliminar: "<<endl;
 cout << "\n (Asegúrese de que el capitulo exista en el archivo para poder removerlo)"<<endl;
@@ -111,14 +110,14 @@ cout<< "Dato removido correctamente"<<endl;
 cout<< datosActualizados.toString() << endl;
 }
 
-void ordenar(){
+void ordenar(){				// Ordenar la lista e ingresar la misma manera agregarlos a la actualizada 
 datosOrd = sorts.ordenaMerge(datos_txt);
  for (int i = 0; i < datosOrd.size(); i++) {
     datosActualizados.add(datosOrd[i]);
   }
 }
 
-void leer(){
+void leer(){				// Leer el archivo línea por línea.
 ifstream inFile(filenameLoad);
   string line = "";
 
@@ -130,7 +129,7 @@ ifstream inFile(filenameLoad);
   }
 }
 
-void casosPrueba(){
+void casosPrueba(){			// Correr casos de prueba
   List<int> lista_prueba;
 	string respuesta;
 
