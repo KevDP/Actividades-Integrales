@@ -25,10 +25,10 @@ int opcion;
 
 do {
 		cout << "1. Leer Archivo\n";
-    cout << "2. Imprimir datos del grafo\n";
-    cout << "3. Camino más corto a recorrer\n";
+    		cout << "2. Imprimir datos del grafo\n";
+    		cout << "3. Camino más corto a recorrer\n";
 		cout << "4. Guardar respuesta en archivo\n";
-    cout << "5. Probar casos de prueba\n";
+    		cout << "5. Probar casos de prueba\n";
 		cout << "6. Exit\n";
 		cin >> opcion;
 		cin.ignore();
