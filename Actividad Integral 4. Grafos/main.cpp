@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <cstring>
 #include <sstream>
 #include "graph.h"
 using namespace std;
@@ -8,16 +9,27 @@ void leerGrafo();
 void imprimirGrafo();
 void recorrerGrafo();
 void guardarRespuesta();
+void casosPrueba();
+
+Graph Grafo;
+string filenameLoad;
+int init_vertx, target_vertx;
 
 int main(){
 int opcion;
 
+  cout<<"\n Ingresa el nombre del archivo a cargar: ";  
+  cin>>filenameLoad;
+
+  cout << "\n ¡¡Bienvenido!! ¿Qué deseas hacer? \n";
+
 do {
 		cout << "1. Leer Archivo\n";
     cout << "2. Imprimir datos del grafo\n";
-    cout << "3. Camino más corto para recorrer el grafo\n";
+    cout << "3. Camino más corto a recorrer\n";
 		cout << "4. Guardar respuesta en archivo\n";
-		cout << "5. Exit\n";
+    cout << "5. Probar casos de prueba\n";
+		cout << "6. Exit\n";
 		cin >> opcion;
 		cin.ignore();
     switch (opcion){
@@ -25,71 +37,73 @@ do {
       case 2: imprimirGrafo(); break;
       case 3: recorrerGrafo(); break;
       case 4: guardarRespuesta(); break;
-      case 5 : cout << "Saliendo..."; return 0;
+      case 5: casosPrueba();
+      case 6 : cout << "Saliendo..."; return 0;
 			default: cout << "Opcion incorrecta\n"; break;
 		}
 		cout << "\n\n";
-	} while (opcion != 5);
+	} while (opcion != 7);
 	return 0;
 }
 
 void leerGrafo(){
-  Graph Grafo;
-  string NomArchivo;
-  cout<<"Inserte el nombre del archivo: \n"<<endl;
-  cin>>NomArchivo;
-  Grafo.loadGraphList(NomArchivo, 5, 5);
-  if(false){
-    cout<<"Archivo no encontrado"<<endl;
-  } else {
+  Grafo.loadGraphList(filenameLoad, 13, 13);
   cout<<"\n Datos obtenidos correctamente del archivo\n"<<"\n";
-  Grafo.printAdjList();
-  }
 }
 
 void imprimirGrafo(){
-  Graph Grafo;
-  string NomArchivo;
-  Grafo.loadGraphList(NomArchivo, 5, 5);
-  if(false){
-    cout<<"Archivo no encontrado"<<endl;
-  } else {
   cout<<"\n El grafo seleccionado tiene los siguientes datos: \n"<<endl;
-  Grafo.printAdjList();
+  cout<<Grafo.printAdjListProy()<<endl;
   cout<<"\n Datos impresos correctamente\n"<<endl;
-  }
 }
 
+
 void recorrerGrafo(){
-  Graph Grafo;
-  int init_vertx, target_vertx;
-  string NomArchivo;
-  Grafo.loadGraphList(NomArchivo, 5, 5);
-  if(false){
-    cout<<"Archivo no encontrado"<<endl;
-  } else {
-  cout<<"Inserte la coordenada para empezar el recorrido"<<endl;
-  cout<<"Inicial: "<<endl;
+  cout<<"\n Inserte la coordenada para empezar el recorrido \n"<<endl;
+  cout<<"Inicial: ";
   cin>>init_vertx;
-  cout<<"Objetivo: "<<endl;
+  cout<<"Objetivo: ";
   cin>>target_vertx;
-  }
+  cout<<"\n Grafo recorrido: \n"<<endl;
+  cout<<Grafo.DFS_path(init_vertx,target_vertx)<<endl;
 }
 
 void guardarRespuesta(){
-  Graph Grafo;
-  ifstream inFile;
-  string filename, newfilename;
-  cout<<"Ingresa el nombre del archivo que quiere guardar"<<endl;
-  cin>>filename;
-  inFile.open(filename);
-	ofstream outFile;
-  cout<<"Ingresa el nombre del archivo a guardar"<<endl;
-  cin>>newfilename;
-  outFile.open(newfilename);
-	while(outFile.good()){
-		Grafo.printAdjListAns();
-		}
+string filenameSave;
+
+ofstream outFile;
+cout << "\n Ingrese el nombre del archivo a guardar: \n"<<endl;
+cin>>filenameSave;
+outFile.open(filenameSave);
+  
+  outFile<<"Inicial: "<<init_vertx<<"\n";
+  outFile<<"Objetivo: "<<target_vertx<<"\n";
+  outFile << Grafo.DFS_path(init_vertx, target_vertx);
+  cout<<"\n Datos guardados correctamente en: " << filenameSave << endl;
   outFile.close();
-	}
+}
+
+  void casosPrueba(){
+    Graph star;
+
+    string star_ans;
+    string star_ans_2;
+
+    star.loadGraphList("caso_prueba.txt", 5, 5); 
+	
+    //star.printAdjList()
+    star_ans="vertex 0 : 1 2 3 4 vertex 1 : 0 2 3 4 vertex 2 : 0 1 3 4 vertex 3 : 0 1 2 4 vertex 4 : 0 1 2 3 ";
+    cout << " 2 " <<	(!star_ans.compare(star.printAdjList()) ? "success\n" : "fail\n");
+	
+    //star.DFS(0,3);
+    star_ans = "visited: 0 4 3 path: 0 4 3";
+    star_ans_2 = "visited: 0 1 2 3 path: 0 1 2 3";
+    cout << " 4 " <<	( (!star_ans.compare(star.DFS(0,3)) || !star_ans_2.compare(star.DFS(0,3)))? "success\n" : "fail\n");
+
+    //star.BFS(0,3);
+    star_ans = "visited: 0 1 2 3 path: 0 3";
+    star_ans_2 = "visited: 0 4 3 path: 0 3";
+    cout << " 6 " <<	((!star_ans.compare(star.BFS(0,3)) || !star_ans_2.compare(star.BFS(0,3))) ? "success\n" : "fail\n");
+}
+
 
