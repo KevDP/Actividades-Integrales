@@ -16,8 +16,8 @@ void buscar();
 void desplegar();
 void casosPrueba();
 
-Heap<string> mi_arbol(100);
-vector<string> datos;
+Heap<string> mi_arbol(60);		// Instanciar el arbol con 100 espacios, no sé ocuparán todos los espacios
+vector<string> datos;			// Utilizar un vector
 string datcarta, filenameLoad;
 
 int main(){
@@ -26,16 +26,16 @@ int opcion;
 cout<<"\n Ingresa el nombre del archivo a cargar: ";  
 cin>>filenameLoad;
 
-leer();
+leer();			// Leer archivo con los datos
 
 cout<<"\n Datos obtenidos correctamente de: " << filenameLoad <<"\n"<< endl;
 
 do {
-    cout << "Datos obtenidos del archivo"<<endl;
+   		 cout << "Datos obtenidos del archivo"<<endl;
 		cout << "1. Desplegar cartas\n";
-    cout << "2. Escribir datos de cartas en archivo\n";
+    		cout << "2. Escribir datos de cartas en archivo\n";
 		cout << "3. Buscar carta\n";
-    cout << "4. Probar casos de prueba\n";
+   		 cout << "4. Probar casos de prueba\n";
 		cout << "5. Exit\n";
 		cin >> opcion;
 		cin.ignore();
@@ -52,7 +52,7 @@ do {
 	return 0;
 }
 
-void leer(){
+void leer(){			// Leer el archivo con los datos
 ifstream inFile(filenameLoad);
   string line = "";
 
@@ -64,7 +64,7 @@ ifstream inFile(filenameLoad);
   }
 }
 
-void escribir(){
+void escribir(){			// Escribir el arbol en un nuevo archivo
   string filenameSave;
 
   ofstream outFile;
@@ -76,7 +76,7 @@ void escribir(){
   outFile.close();
 }
 
-void buscar(){
+void buscar(){				// Buscar los datos de la carta
 int cart;
 cout << "\n Ingrese el número de la carta a buscar: \n"<<endl;
 cin>>cart;
@@ -91,11 +91,11 @@ for (int i = 0; i < mi_arbol.size(); i++) {
 cout<< "\n   Carta encontrada correctamente. \n"<<endl;
 }
 
-void desplegar(){
+void desplegar(){			// Ver los datos del árbol
   cout<<mi_arbol.toString();
 }
 
-void casosPrueba(){
+void casosPrueba(){			// Correr los casos de prueba
   Heap<int> heap(10);
 	string ans;
 	heap.push(99);
