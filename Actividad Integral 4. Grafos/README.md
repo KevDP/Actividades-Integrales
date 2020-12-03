@@ -5,7 +5,7 @@
 Este programa tiene como fin llevar a cabo un cálculo a través del algoritmo del DFS (Deep First Search) para conocer el camino más corto que debería recorrer el usuario en un aeropuerto con una arquitectura de las salas y pasillos como el del grafo presentado con el motivo de llegar a la sala correcta impresa en su boleto y que no se pierdan en la sala que no les corresponde esperar su vuelo, para esto, se recibe un archivo con dos coordenadas para formar los pasillos del aeropuerto (1, 2) el primero indica de donde viene el pasillo (aunque parezca trivial o subjetivo, el orden no es importante), el segundo indica a dónde conecta o llegará el pasillo. El main consiste en ingresar el nombre del archivo donde se tienen los datos, después de ello se desplegará un menú para realizar diferentes acciones con el grafo ingresado, entre las opciones está: 1. leer el grafo en del archivo 2. Mostrar los datos que contiene el grafo a manera de las conexiones en los pasillos 3. Calcular el camino más corto a recorrer 4. Guardar la respuesta del punto 3 en un archivo 5. Probar los casos de prueba del grafo.
 
 #### Plano del aeropuerto:
-![alt tag](https://raw.githubusercontent.com/KevDP/Actividades-Integrales/Actividad Integral 4. Grafos/GrafoAeropuerto.png)
+![alt text](https://raw.githubusercontent.com/KevDP/Actividades-Integrales/master/Actividad%20Integral%204.%20Grafos/GrafoAeropuerto.png)
 
 + Cabe mencionar que el programa contiene un main (Casos_prueba.cpp) para comprobar las funciones utilizadas en el grafo.
 
