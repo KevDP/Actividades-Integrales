@@ -34,10 +34,11 @@ class Graph {
 	// - Funciones para imprimir -
 	string printAdjMat();
 	string printAdjList();
-  string printAdjListAns();
+  string printAdjListProy();
 
 	// - Algoritmos de búsqueda -
 	string DFS(int init_vertex, int target_vertex);
+  string DFS_path(int init_vertex, int target_vertex);
 	string BFS(int init_vertex, int target_vertex);
 };
 
@@ -62,7 +63,7 @@ void Graph::loadGraphMat(string filename, int vertices, int arcos){
 		string x; // (x, y)
 		string y;
 		getline(file, x, ',');
-    if (x != ""){
+    	if (x != ""){
 			getline(file, y, '\n'); 
 			x = x.substr(1, x.length()-1);
 			y = y.substr(1, y.length()-2);
@@ -100,7 +101,7 @@ void Graph::loadGraphList(string filename, int vertices, int arcos){
 		string x; // (x, y)
 		string y;
 		getline(file, x, ',');
-    if (x != ""){
+    	if (x != ""){
 			getline(file, y, '\n'); 
 			x = x.substr(1, x.length()-1);
 			y = y.substr(1, y.length()-2);
@@ -140,21 +141,91 @@ string Graph::printAdjList(){
   cout<<list<<endl;
 }
 
-string Graph::printAdjListAns(){
+string Graph::printAdjListProy(){
 
 	string list = "";
 
 	for(int i=0; i<adj_list.size(); i++){
-		list += "vertex " + to_string(i) + " : ";
+		list += "\n Sala " + to_string(i) + ", conexión con salas : ";
 		sort(adj_list[i].begin(), adj_list[i].end());
 		for(int j=0; j<adj_list[i].size(); j++){
-			list += to_string(adj_list[j][i]) + " ";
+			list += to_string(adj_list[i][j]) + " ";
 		}
 	}
 	return list;
   cout<<list<<endl;
 }
 
+string Graph::DFS_path(int init_vertex, int target_vertex){
+
+	// - Copiar la lista de adyacencia (adj_list) -
+
+	vector<vector<int>> adj_list_copia;
+	for (int i=0; i<adj_list.size(); i++){
+		adj_list_copia.push_back(adj_list[i]);
+	}
+
+	vector<int> stack;
+	vector<int> visited;
+	bool found = false;
+	int current = init_vertex;
+
+	while (!found && !(visited.size() >= num_vertices)){
+
+		// - ¿Ya ha sido visitado? -
+
+		bool already_visited = false;
+		for (int i=0; i<visited.size(); i++){
+			if(current == visited[i]) {
+				already_visited = true;
+				break;
+			}
+		}
+
+		// - Agregar a visitados -
+
+		if (!already_visited) visited.push_back(current);
+
+		// - ¿Ya se encontró? -
+
+		if (current == target_vertex){
+			found = true;
+			break;
+		}
+
+		// - Borrar valores ya visitados -
+
+		for (int i=0; i<adj_list_copia[current].size(); i++){
+			for (int j=0; j<visited.size(); j++){
+				if(adj_list_copia[current][i] == visited[j])
+					adj_list_copia[current].erase(adj_list_copia[current].begin()+i);
+			}
+		}
+		if (adj_list_copia[current].size() > 0){
+			stack.push_back(current);
+
+			// - Revisar al último hijo del nodo -
+
+			int temp_index = current;
+			current = adj_list_copia[current].back();
+			adj_list_copia[temp_index].pop_back();
+		} 
+		else {
+
+			// - ¿Tocó "pared" alguna?
+
+			current = stack[stack.size()-1];
+			stack.pop_back();
+		}
+	}
+	stack.push_back(current);
+	
+	// - Cambiar toda la lista a string -
+
+	string visited_str = show_vector(visited);
+	string path_str = show_vector(stack);
+	return path_str;
+}
 
 string Graph::DFS(int init_vertex, int target_vertex){
 
