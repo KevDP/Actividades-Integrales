@@ -9,7 +9,7 @@ using namespace std;
 void casosPrueba();
 
 template <class T>
-string arrayToString(const vector<T> &v) {
+string arrayToString(const vector<T> &v) {	// funcion necesaria para correr los casos de prueba con formato de strings
 	stringstream aux;
 
 	aux << "[" << v[0];
@@ -32,13 +32,13 @@ do {
 		cin >> opcion;
 		cin.ignore();
     switch (opcion){
-      case 1: leer(); break;
-      case 2: escribir(); break;
-      case 3: buscarxRangos(); return 0;
-      case 4: casosPrueba(); break;
+      case 1: leer(); break;			// función para obtener los datos del archivo (función en método.h)
+      case 2: escribir(); break;		// función para escribir los datos en archivo nuevo (función en método.h)
+      case 3: buscarxRangos(); return 0;	// función que permite buscar mediante un rango los datos de birlos que se necesiten (función en método.h)
+      case 4: casosPrueba(); break;		// función para probar los casos de prueba (función en el main)
 
       case 5 : cout << "Saliendo..."; return 0;
-			default: cout << "Opcion incorrecta\n"; break;
+	default: cout << "Opcion incorrecta\n"; break;
 		}
 		cout << "\n\n";
 	} while (opcion != 6);
@@ -46,7 +46,7 @@ do {
 }
 
 void casosPrueba(){
-int array1[] = {58, 92, 75, 5, 21, 92, 84, 91, 64, 54, 3, 28, 11, 61, 65, 4, 1, 8, 52, 78};
+	int array1[] = {58, 92, 75, 5, 21, 92, 84, 91, 64, 54, 3, 28, 11, 61, 65, 4, 1, 8, 52, 78};
 	vector<int> original1 (array1, array1 + sizeof(array1) / sizeof(int) );
 
 	int array2[] = {900, 120, 10, 5, 897, 333, 68};
@@ -58,7 +58,7 @@ int array1[] = {58, 92, 75, 5, 21, 92, 84, 91, 64, 54, 3, 28, 11, 61, 65, 4, 1, 
 
 	string resp2 = "[5, 10, 68, 120, 333, 897, 900]";
 
-  prueba = original1;
+  	prueba = original1;
 	sorts.ordenaMerge(prueba);
 	cout << " 1 " <<	(!resp1.compare(arrayToString(prueba)) ? "success\n" : "fail\n");
 
@@ -67,7 +67,7 @@ int array1[] = {58, 92, 75, 5, 21, 92, 84, 91, 64, 54, 3, 28, 11, 61, 65, 4, 1, 
 	cout << " 2 " <<	(!resp2.compare(arrayToString(prueba)) ? "success\n" : "fail\n");
 
 	sorts.ordenaMerge(prueba);
-  cout << " 3 " <<	(5 == sorts.busqSecuencial(prueba, 897) ? "success\n" : "fail\n");
+  	cout << " 3 " <<	(5 == sorts.busqSecuencial(prueba, 897) ? "success\n" : "fail\n");
 
 	cout << " 4 " <<	(2 == sorts.busqSecuencial(prueba, 68) ? "success\n" : "fail\n");
 
