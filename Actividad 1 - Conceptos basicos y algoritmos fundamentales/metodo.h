@@ -65,10 +65,10 @@ void buscarxRangos(){
   cin>>min;
   cout<<"\n a: \n\n";
   cin>>max;
-  if (min<0 || max>datos_txt.size()){
+  if (min<0 || max>datos_txt.size()){				// Si está fuera de rango desplegar la respuesta
     cout<<"\n\n"<<"No es posible encontrar algunos datos"<<"\n";
   } else {
-  for(int i = min; i <= max; i++){
+  for(int i = min; i <= max; i++){				// Desplegar los datos según el rango
        cout<<datos_txt.at(i)<<"\n";
   }
   }
