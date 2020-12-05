@@ -367,3 +367,4 @@ string Graph::BFS(int init_vertex, int target_vertex){
 	matrix_result = matrix_result.substr(0, matrix_result.size()-1);
 	return matrix_result;	
 }
+
