@@ -131,7 +131,7 @@ string Graph::printAdjList(){
 	string list = "";
 
 	for(int i=0; i<adj_list.size(); i++){
-		list += "vertex " + to_string(i) + " : ";
+		list += "vertice " + to_string(i) + " : ";
 		sort(adj_list[i].begin(), adj_list[i].end());
 		for(int j=0; j<adj_list[i].size(); j++){
 			list += to_string(adj_list[i][j]) + " ";
