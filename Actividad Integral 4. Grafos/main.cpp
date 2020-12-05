@@ -91,14 +91,13 @@ outFile.open(filenameSave);
 
     estrella.loadGraphList("caso_prueba.txt", 5, 5); 
 	
-    estrella_resCorrecta1="vertice 0 : 1 2 3 4  1 : 0 2 3 4 vertice 2 : 0 1 3 4 vertice 3 : 0 1 2 4 vertice 4 : 0 1 2 3 ";
+    estrella_resCorrecta1="vertice 0 : 1 2 3 4 vertice 1 : 0 2 3 4 vertice 2 : 0 1 3 4 vertice 3 : 0 1 2 4 vertice 4 : 0 1 2 3 ";
     cout << " 2 " <<	(!estrella_resCorrecta1.compare(estrella.printAdjList()) ? "success\n" : "fail\n");
-    star_ans = "visitados: 0 4 3 recorrido: 0 4 3";
-    star_ans_2 = "visitados: 0 1 2 3 recorrido: 0 1 2 3";
+    estrella_resCorrecta1 = "visitados: 0 4 3 recorrido: 0 4 3";
+    estrella_resCorrecta2 = "visitados: 0 1 2 3 recorrido: 0 1 2 3";
     cout << " 4 " <<	( (!estrella_resCorrecta1.compare(estrella.DFS(0,3)) || !estrella_resCorrecta2.compare(estrella.DFS(0,3)))? "success\n" : "fail\n");
-    star_ans = "visitados: 0 1 2 3 recorrido: 0 3";
-    star_ans_2 = "visitados: 0 4 3 recorrido: 0 3";
-    cout << " 6 " <<	((!estrella_resCorrecta1.compare(estrella.BFS(0,3)) || !estrella_resCorrecta.compare(estrella.BFS(0,3))) ? "success\n" : "fail\n");
+    estrella_resCorrecta1 = "visitados: 0 1 2 3 recorrido: 0 3";
+    estrella_resCorrecta2 = "visitados: 0 4 3 recorrido: 0 3";
+    cout << " 6 " <<	((!estrella_resCorrecta1.compare(estrella.BFS(0,3)) || !estrella_resCorrecta2.compare(estrella.BFS(0,3))) ? "success\n" : "fail\n");
 }
-
 
