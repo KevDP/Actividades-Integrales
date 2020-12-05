@@ -2,7 +2,7 @@
 
 ## Correcciones: 
 
-### Actividad Integral 1. Ordenamientos ( Calificada )
+### Actividad Integral 1. Ordenamientos ( Calificada en revisión )
 
 #### - Corregido un problema donde se loopeaba cuando se buscaba un dato fuera de rango del archivo.
 
@@ -10,7 +10,7 @@
 
 #### - Se ha agregado la opción "casos de prueba" en el menú desplegable.
 
-### Actividad Integral 2. Listas
+### Actividad Integral 2. Listas ( Calificada en revisión )
 
 #### - Proyecto realizado desde cero.
 
@@ -22,7 +22,7 @@
 
 #### - Se ha documentado el código del main.cpp para hacerlo más intuitivo.
 
-### Actividad Integral 4. Grafos
+### Actividad Integral 4. Grafos ( Calificada en revisión )
 
 #### - Se ha corregido el motivo del proyecto y la estructuración del menú desplegable.
 
