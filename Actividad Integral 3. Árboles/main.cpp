@@ -18,7 +18,7 @@ void casosPrueba();
 
 Heap<string> mi_arbol(60);		// Instanciar el arbol con 100 espacios, no sé ocuparán todos los espacios
 vector<string> datos;			// Utilizar un vector
-string datcarta, filenameLoad;
+string filenameLoad;
 
 int main(){
 int opcion;
