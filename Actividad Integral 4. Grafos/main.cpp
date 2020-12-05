@@ -84,26 +84,21 @@ outFile.open(filenameSave);
 }
 
   void casosPrueba(){			// Probar los casos de prueba
-    Graph star;
+    Graph estrella;
 
-    string star_ans;
-    string star_ans_2;
+    string estrella_resCorrecta1;
+    string estrella_resCorrecta2;
 
-    star.loadGraphList("caso_prueba.txt", 5, 5); 
+    estrella.loadGraphList("caso_prueba.txt", 5, 5); 
 	
-    //star.printAdjList()
-    star_ans="vertex 0 : 1 2 3 4 vertex 1 : 0 2 3 4 vertex 2 : 0 1 3 4 vertex 3 : 0 1 2 4 vertex 4 : 0 1 2 3 ";
-    cout << " 2 " <<	(!star_ans.compare(star.printAdjList()) ? "success\n" : "fail\n");
-	
-    //star.DFS(0,3);
-    star_ans = "visited: 0 4 3 path: 0 4 3";
-    star_ans_2 = "visited: 0 1 2 3 path: 0 1 2 3";
-    cout << " 4 " <<	( (!star_ans.compare(star.DFS(0,3)) || !star_ans_2.compare(star.DFS(0,3)))? "success\n" : "fail\n");
-
-    //star.BFS(0,3);
-    star_ans = "visited: 0 1 2 3 path: 0 3";
-    star_ans_2 = "visited: 0 4 3 path: 0 3";
-    cout << " 6 " <<	((!star_ans.compare(star.BFS(0,3)) || !star_ans_2.compare(star.BFS(0,3))) ? "success\n" : "fail\n");
+    estrella_resCorrecta1="vertice 0 : 1 2 3 4  1 : 0 2 3 4 vertice 2 : 0 1 3 4 vertice 3 : 0 1 2 4 vertice 4 : 0 1 2 3 ";
+    cout << " 2 " <<	(!estrella_resCorrecta1.compare(estrella.printAdjList()) ? "success\n" : "fail\n");
+    star_ans = "visitados: 0 4 3 recorrido: 0 4 3";
+    star_ans_2 = "visitados: 0 1 2 3 recorrido: 0 1 2 3";
+    cout << " 4 " <<	( (!estrella_resCorrecta1.compare(estrella.DFS(0,3)) || !estrella_resCorrecta2.compare(estrella.DFS(0,3)))? "success\n" : "fail\n");
+    star_ans = "visitados: 0 1 2 3 recorrido: 0 3";
+    star_ans_2 = "visitados: 0 4 3 recorrido: 0 3";
+    cout << " 6 " <<	((!estrella_resCorrecta1.compare(estrella.BFS(0,3)) || !estrella_resCorrecta.compare(estrella.BFS(0,3))) ? "success\n" : "fail\n");
 }
 
 
