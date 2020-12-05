@@ -5,6 +5,7 @@
 #include <sstream>
 #include <iostream>
 #include <fstream>
+#include <vector>
 
 using namespace std;
 
@@ -19,6 +20,7 @@ private:
 	unsigned int left(unsigned int) const;
 	unsigned int right(unsigned int) const;
 	void swap(unsigned int, unsigned int);
+  vector<T> vec;
 
 public:
   //Heap();
@@ -30,6 +32,7 @@ public:
   bool empty() const;
   void find(T);
   void heapify(unsigned int);
+  void printvector(vector<string> &);
   
   int size() const;  //Ya no es necesario que sea uint, dado que usa count, quien ya posee ese atributo
 
@@ -53,17 +56,17 @@ Heap<T>::~Heap() {
 
 template <class T>
 unsigned int Heap<T>::parent(unsigned int pos) const {
-	return (pos) / 2;
+	return ((pos)/2);
 }
 
 template <class T>
 unsigned int Heap<T>::left(unsigned int pos) const {
-	return ((2 * pos));
+	return ((2 * pos) + 1);
 }
 
 template <class T>
 unsigned int Heap<T>::right(unsigned int pos) const {
-	return ((2 * pos) + 1);
+	return ((2 * pos));
 }
 
 template <class T>
@@ -92,7 +95,7 @@ void Heap<T>::heapify(unsigned int pos) {
 
 template <class T>
 void Heap<T>::push(T val){    // Ingresar un dato a la fila priorizada
-	unsigned int pos;
+	int pos;
 	pos = count;
 	count++;
 
@@ -108,7 +111,15 @@ T Heap<T>::pop(){       // Sacar un dato de la fila priorizada
 	T aux = data[1];
 	data[1] = data[--count];
 	heapify(1);
+  vec.push_back(aux);
 	return aux;
+}
+
+template <class T>
+void Heap<T>::printvector(vector<string> &vec){       // Sacar un dato de la fila priorizada
+	for(int i = 0; i < vec.size(); i++){
+    cout <<vec.at(i)<<endl;
+  }
 }
 
 template <class T>
@@ -154,11 +165,13 @@ string Heap<T>::toStringCases() const {
 template <class T>
 string Heap<T>::toString() const {
 	stringstream aux;
-	aux << "";	for (unsigned int i = 1; i < count; i++) {
+	aux << "";	for (int i = 1; i < count; i++) {
 		if (i != 1) {
 			aux << "\n";
-		} aux << data[i];
-	} aux << "";
+		} 
+    aux << data[i];
+	} 
+  aux << "";
 	return aux.str();
 }
 
