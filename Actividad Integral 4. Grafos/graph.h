@@ -295,7 +295,7 @@ string Graph::DFS(int init_vertex, int target_vertex){
 
 	string visited_str = show_vector(visited);
 	string path_str = show_vector(stack);
-	string list_result = "visited: " + visited_str + "path: " + path_str;
+	string list_result = "visitados: " + visited_str + "recorrido: " + path_str;
 	list_result = list_result.substr(0, list_result.size()-1);
 	return list_result;
 }
@@ -363,7 +363,7 @@ string Graph::BFS(int init_vertex, int target_vertex){
 
 	string visited_str = show_vector(converted_visited);
 	string path_str = show_vector(path);
-	string matrix_result = "visited: " + visited_str + "path: " + path_str;
+	string matrix_result = "visitados: " + visited_str + "recorrido: " + path_str;
 	matrix_result = matrix_result.substr(0, matrix_result.size()-1);
 	return matrix_result;	
 }
