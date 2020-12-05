@@ -10,12 +10,12 @@
 
 using namespace std;
 
-void leer();
-void escribir();
-void ordenar();
-void buscar();
-void desplegar();
-void casosPrueba();
+void leer();			// leer archivo
+void escribir();		// escribir en un nuevo archivo
+void ordenar();			// ordenar los datos recibidos del archivo
+void buscar();			// buscar carta según su número
+void desplegar();		// desplegar los datos
+void casosPrueba();		// correr casos de prueba
 
 Heap<string> mi_arbol(100);
 vector<string> datOrdenados;
@@ -36,11 +36,11 @@ cout<<"\n Datos obtenidos correctamente de: " << filenameLoad <<"\n"<< endl;
 
 do {
     cout << "Datos obtenidos del archivo"<<endl;
-		cout << "1. Desplegar cartas\n";
+    cout << "1. Desplegar cartas\n";
     cout << "2. Escribir datos de cartas en archivo\n";
-		cout << "3. Buscar carta\n";
+    cout << "3. Buscar carta\n";
     cout << "4. Probar casos de prueba\n";
-		cout << "5. Exit\n";
+    cout << "5. Exit\n";
 		cin >> opcion;
 		cin.ignore();
     switch (opcion){
@@ -60,7 +60,7 @@ void leer(){
 ifstream inFile;
 inFile.open(filenameLoad);
   string line = "";
-  if(inFile.is_open()){
+  if(inFile.is_open()){					// Si el archivo está abierto
     while(getline(inFile, line)){
       mi_arbol.push(line);
       datos.push_back(line);
@@ -71,13 +71,12 @@ inFile.close();
 
 void escribir(){
   string filenameSave;
-
   ofstream outFile;
   cout << "\n Ingrese el nombre del archivo a guardar: \n"<<endl;
   cin>>filenameSave;
   outFile.open(filenameSave);
   for(int i = 0; i < mi_arbol.size(); i++){
-  outFile << datOrdenados[i] <<endl;
+  outFile << datOrdenados[i] <<endl;				// Guardar los datos ordenados en archivo
   }
   cout<<"\n Datos guardados correctamente en: " << filenameSave << endl;
   outFile.close();
@@ -88,7 +87,7 @@ int cart;
 cout << "\n Ingrese el número de la carta a buscar: \n"<<endl;
 cin>>cart;
 for (int i = 0; i < mi_arbol.size(); i++) {
-  if(i == cart){
+  if(i == cart){							// Si el número de carta coincide con la linea
    cout<<datOrdenados[i]<<endl;
    if(cart == 50){
      cout<<datOrdenados[50]<<endl;
@@ -100,9 +99,9 @@ cout<< "\n   Carta encontrada correctamente. \n"<<endl;
 
 void desplegar(){
   for (int i = 0; i < mi_arbol.size(); i++) {
-    mi_arbol.pop();
+    mi_arbol.pop();							// Borrar datos para reordenarlos
   }
-  mi_arbol.printvector(datOrdenados);
+  mi_arbol.printvector(datOrdenados);					// Mostrar datos ordenados que se guardaron en un vector
 }
 
 void ordenar(){
